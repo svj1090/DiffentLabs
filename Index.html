@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>diffent labs — Startup Chile Application Concept</title>
+  <style>
+    :root{
+      --bg:#07111f;
+      --bg2:#0b1730;
+      --panel:#101d38;
+      --panel2:#16264a;
+      --line:#2a3d6e;
+      --text:#eef4ff;
+      --muted:#b2bfdc;
+      --accent:#7fb1ff;
+      --accent2:#95f0cf;
+      --accent3:#ffd88b;
+      --danger:#ff9e9e;
+      --shadow:0 18px 50px rgba(0,0,0,.28);
+      --radius:22px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(127,177,255,.14), transparent 24%),
+        radial-gradient(circle at 90% 12%, rgba(149,240,207,.09), transparent 20%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%);
+      line-height:1.65;
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 20px 80px}
+    .nav{
+      position:sticky; top:0; z-index:30;
+      backdrop-filter: blur(14px);
+      background:rgba(7,17,31,.74);
+      border-bottom:1px solid rgba(255,255,255,.05);
+    }
+    .nav-inner{
+      max-width:var(--max); margin:0 auto; padding:16px 20px;
+      display:flex; align-items:center; justify-content:space-between; gap:18px;
+    }
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:-.02em}
+    .logo{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg, var(--accent), var(--accent2));box-shadow:0 8px 24px rgba(127,177,255,.26)}
+    .nav-links{display:flex; flex-wrap:wrap; gap:14px; color:var(--muted); font-size:.96rem}
+    .hero{padding:72px 0 30px;display:grid; grid-template-columns:1.2fr .8fr; gap:26px; align-items:stretch}
+    .hero-main, .hero-side{background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08);border-radius:28px;box-shadow:var(--shadow)}
+    .hero-main{padding:44px}
+    .eyebrow{display:inline-block;color:var(--accent2);background:rgba(149,240,207,.08);border:1px solid rgba(149,240,207,.22);border-radius:999px;padding:7px 12px;font-size:.88rem;margin-bottom:16px}
+    h1{margin:0 0 16px;font-size:clamp(2.4rem, 5vw, 4.7rem);line-height:1.02;letter-spacing:-.045em}
+    .lead{font-size:1.1rem; color:var(--muted); max-width:760px;margin:0 0 24px}
+    .cta{display:flex; flex-wrap:wrap; gap:12px; margin:24px 0 30px}
+    .btn{padding:12px 18px; border-radius:14px; font-weight:600;border:1px solid rgba(255,255,255,.12)}
+    .btn.primary{background:linear-gradient(135deg, rgba(127,177,255,.22), rgba(149,240,207,.16));color:var(--text)}
+    .btn.secondary{color:var(--muted); background:rgba(255,255,255,.03)}
+    .hero-kpis{display:grid; grid-template-columns:repeat(3, 1fr); gap:12px}
+    .kpi{background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07);border-radius:18px; padding:16px}
+    .kpi strong{display:block; font-size:1.3rem; letter-spacing:-.03em; margin-bottom:4px}
+    .kpi span{color:var(--muted); font-size:.94rem}
+    .hero-side{padding:24px;display:flex; flex-direction:column; gap:16px; justify-content:space-between}
+    .mini-panel{background:var(--panel);border:1px solid rgba(255,255,255,.07);border-radius:18px; padding:18px}
+    .mini-title{color:var(--accent3); font-size:.86rem; text-transform:uppercase; letter-spacing:.08em; margin-bottom:8px}
+    .mini-panel p{margin:0;color:var(--muted)}
+    .section{margin-top:28px;background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);box-shadow:var(--shadow);padding:30px}
+    .section h2{margin:0 0 16px; font-size:1.8rem; letter-spacing:-.03em}
+    .section-intro{color:var(--muted); max-width:900px; margin-bottom:18px}
+    .grid-2, .grid-3, .grid-4{display:grid; gap:16px}
+    .grid-2{grid-template-columns:repeat(2, minmax(0,1fr))}
+    .grid-3{grid-template-columns:repeat(3, minmax(0,1fr))}
+    .grid-4{grid-template-columns:repeat(4, minmax(0,1fr))}
+    .card{background:var(--panel);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:20px}
+    .card h3{margin:0 0 10px; font-size:1.05rem; color:var(--accent2)}
+    .card p{margin:0;color:var(--muted)}
+    .card ul{margin:12px 0 0 18px; padding:0}
+    .card li{margin:8px 0; color:var(--muted)}
+    .quote{background:linear-gradient(180deg, rgba(127,177,255,.10), rgba(149,240,207,.06));border:1px solid rgba(127,177,255,.18);border-left:4px solid var(--accent);border-radius:16px;padding:18px 18px 18px 20px;color:#dce8ff;font-size:1.04rem;margin:14px 0}
+    .pill-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:14px}
+    .pill{border-radius:999px; padding:8px 12px; font-size:.92rem;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);color:var(--muted)}
+    .flow{display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:12px}
+    .flow .step{border-radius:18px; padding:18px;background:var(--panel2);border:1px solid rgba(255,255,255,.08)}
+    .num{width:34px;height:34px;border-radius:12px;display:grid;place-items:center;margin-bottom:10px; background:rgba(127,177,255,.14); color:var(--accent);font-weight:700}
+    .metric{text-align:center;padding:22px 14px;background:var(--panel);border:1px solid rgba(255,255,255,.07);border-radius:18px}
+    .metric strong{display:block; font-size:1.9rem; letter-spacing:-.04em; margin-bottom:6px}
+    .metric span{color:var(--muted)}
+    .roadmap{display:grid; gap:12px}
+    .road{display:grid; grid-template-columns:190px 1fr; gap:16px;border:1px solid rgba(255,255,255,.08);background:var(--panel);border-radius:18px; padding:18px}
+    .road .phase{color:var(--accent3); font-weight:700; letter-spacing:.02em}
+    .founder-hero{display:grid; grid-template-columns:.8fr 1.2fr; gap:18px; align-items:stretch}
+    .founder-name{font-size:2rem;line-height:1.1;letter-spacing:-.04em;margin:4px 0 8px}
+    .founder-photo{min-height:260px;border-radius:20px;background:radial-gradient(circle at 35% 20%, rgba(149,240,207,.20), transparent 28%),linear-gradient(135deg, rgba(127,177,255,.18), rgba(255,216,139,.08)),var(--panel);border:1px dashed rgba(255,255,255,.18);display:grid;place-items:center;color:var(--muted);text-align:center;padding:22px}
+    .timeline{display:grid; gap:12px; margin-top:14px}
+    .timeline-item{display:grid; grid-template-columns:160px 1fr; gap:14px; padding:16px; border-radius:16px; background:var(--panel); border:1px solid rgba(255,255,255,.07)}
+    .timeline-item strong{color:var(--accent3)}
+    .footer{color:var(--muted);padding:26px 0 0;text-align:center}
+    @media (max-width: 980px){.hero,.founder-hero{grid-template-columns:1fr}.hero-kpis,.grid-4{grid-template-columns:repeat(2,1fr)}.grid-3,.flow{grid-template-columns:1fr 1fr}}
+    @media (max-width: 720px){.grid-2,.grid-3,.grid-4,.flow,.hero-kpis{grid-template-columns:1fr}.road,.timeline-item{grid-template-columns:1fr}.hero-main{padding:28px}.section{padding:22px}.nav-inner{align-items:flex-start; flex-direction:column}}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand"><div class="logo"></div><div>diffent labs</div></div>
+      <div class="nav-links">
+        <a href="#thesis">Thesis</a>
+        <a href="#model">Model</a>
+        <a href="#founder">Founder</a>
+        <a href="#chile">Chile Impact</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#ask">Startup Chile Ask</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero-main">
+        <div class="eyebrow">Startup Chile application concept • diffent labs</div>
+        <h1>Reusable, renewable, retryable compute for research.</h1>
+        <p class="lead">
+          <strong>diffent labs</strong> is a sustainability-first AI and scientific computing platform designed to make high-performance compute accessible to researchers, independent builders, and institutions priced out of hyperscale cloud infrastructure.
+        </p>
+        <div class="quote">
+          The goal is to build infrastructure that enables research and curiosity. The operating model is designed to sustain access and expand capacity, not maximize extraction.
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="#founder">Founder background</a>
+          <a class="btn secondary" href="#chile">Chile value creation</a>
+        </div>
+        <div class="hero-kpis">
+          <div class="kpi"><strong>Reusable</strong><span>Second-life hardware from global infrastructure refresh cycles.</span></div>
+          <div class="kpi"><strong>Renewable</strong><span>Paraguay hydro power as the low-cost execution layer.</span></div>
+          <div class="kpi"><strong>Retryable</strong><span>Checkpointed jobs instead of expensive redundancy-first design.</span></div>
+        </div>
+      </div>
+      <aside class="hero-side">
+        <div class="mini-panel"><div class="mini-title">Application timing</div><p>Built as a Startup Chile-ready concept page while the program is open, focused on innovation, Chile value creation, and execution credibility.</p></div>
+        <div class="mini-panel"><div class="mini-title">Chile’s role</div><p>The intelligence layer: orchestration software, scheduling logic, research partnerships, governance, and platform IP.</p></div>
+        <div class="mini-panel"><div class="mini-title">Founder fit</div><p>Commercial infrastructure background evolving into AI, research computing, and next-generation data center architecture.</p></div>
+      </aside>
+    </section>
+
+    <section id="thesis" class="section">
+      <h2>What diffent labs changes</h2>
+      <p class="section-intro">The platform breaks from conventional infrastructure assumptions in four ways: reusable hardware, renewable energy, recovery-first systems, and research access over premium uptime.</p>
+      <div class="grid-2">
+        <div class="card"><h3>1. Reusable infrastructure over replacement cycles</h3><p>diffent labs is built to absorb capable second-life GPUs, servers, networking equipment, and storage from organizations upgrading their infrastructure.</p><ul><li>Extends useful hardware lifespan</li><li>Reduces e-waste and upfront capital intensity</li><li>Creates a circular compute model</li></ul></div>
+        <div class="card"><h3>2. Renewable energy over fossil-heavy compute</h3><p>Paraguay’s hydroelectric power base gives the compute layer a clean, low-cost operating foundation for batch AI and scientific workloads.</p><ul><li>Lower operating cost pressure</li><li>Stronger sustainability case for partners</li><li>Cleaner compute for research-intensive workloads</li></ul></div>
+        <div class="card"><h3>3. Retry mechanisms over backup-heavy architecture</h3><p>Many research workloads do not need enterprise-grade uninterrupted uptime. They need reliable recovery, checkpoints, and queue-based execution.</p><ul><li>Jobs checkpoint and resume after interruption</li><li>Lower dependence on diesel backup and redundant power</li><li>Affordable compute by design</li></ul></div>
+        <div class="card"><h3>4. Disruptive mode research</h3><p>Researchers can run interruptible workloads at lower cost when continuity is less important than total compute access.</p><ul><li>Model training and fine-tuning</li><li>Simulations and batch processing</li><li>Open-source research experiments</li></ul></div>
+      </div>
+    </section>
+
+    <section id="model" class="section">
+      <h2>Platform model</h2>
+      <p class="section-intro">The architecture is asymmetric by design. Chile is the brain of the platform. Paraguay is the renewable compute engine.</p>
+      <div class="flow">
+        <div class="step"><div class="num">01</div><strong>Chile control layer</strong><p>User access, orchestration, scheduling intelligence, partnerships, and platform governance.</p></div>
+        <div class="step"><div class="num">02</div><strong>Paraguay compute layer</strong><p>Low-cost renewable execution for checkpointed GPU and batch research jobs.</p></div>
+        <div class="step"><div class="num">03</div><strong>Recovery-first design</strong><p>Queues, checkpoints, and retries reduce the need for expensive uptime-first infrastructure.</p></div>
+        <div class="step"><div class="num">04</div><strong>Reinvestment loop</strong><p>Operating surplus sustains maintenance, expands capacity, and lowers barriers for researchers.</p></div>
+      </div>
+    </section>
+
+    <section id="founder" class="section">
+      <h2>Founder background</h2>
+      <div class="founder-hero">
+        <div class="founder-photo">
+          <div>
+            <strong>Founder profile area</strong><br />
+            Add portrait or logo here for final version.
+          </div>
+        </div>
+        <div class="card">
+          <div class="mini-title">Founder</div>
+          <div class="founder-name">Sanjay Jampana</div>
+          <p>
+            Sanjay Jampana is a software engineering and cloud infrastructure professional with over a decade of experience building reliable systems for commercial environments. His career has included work across software engineering, cloud computing, supply-chain technology, and research-oriented infrastructure.
+          </p>
+          <p style="margin-top:12px;">
+            After years of working on highly available systems for companies, his interest has shifted toward scientific computing, AI infrastructure, and research enablement. diffent labs emerged from a practical question: what if research compute did not need to look like expensive enterprise cloud infrastructure?
+          </p>
+          <div class="pill-row">
+            <div class="pill">Cloud infrastructure</div>
+            <div class="pill">Highly available systems</div>
+            <div class="pill">Scientific computing</div>
+            <div class="pill">AI infrastructure</div>
+            <div class="pill">HPC architecture</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <strong>Commercial infrastructure</strong>
+          <div>Built and operated technology systems where uptime, reliability, scaling, and operational discipline mattered for business-critical environments.</div>
+        </div>
+        <div class="timeline-item">
+          <strong>Research exposure</strong>
+          <div>Developed a deeper interest in research computing and infrastructure that supports experimentation, including work connected to scientific and energy-sector research environments.</div>
+        </div>
+        <div class="timeline-item">
+          <strong>Shift in focus</strong>
+          <div>Moved from purely commercial reliability thinking toward a new question: how can infrastructure be made affordable enough for curiosity-driven research?</div>
+        </div>
+        <div class="timeline-item">
+          <strong>Current preparation</strong>
+          <div>Actively studying AI, compute infrastructure, and HPC architecture while awaiting admission decisions for a master’s program in data center engineering this year to strengthen the technical foundation for next-generation AI HPC systems.</div>
+        </div>
+        <div class="timeline-item">
+          <strong>diffent labs</strong>
+          <div>The result is a platform thesis: reusable global hardware, renewable energy, and retry-based architecture can unlock research computing for people and institutions outside the traditional hyperscale ecosystem.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="chile" class="section">
+      <h2>Why Chile benefits directly</h2>
+      <p class="section-intro">For Startup Chile, the venture must create meaningful value inside Chile. diffent labs positions Chile as the place where the platform is designed, coordinated, and connected to research communities.</p>
+      <div class="grid-3">
+        <div class="card"><h3>Platform IP in Chile</h3><p>Scheduling logic, orchestration software, access policies, and recovery-first workflows are developed and managed from Chile.</p></div>
+        <div class="card"><h3>Research partnerships</h3><p>Chile-based universities, scientific groups, and climate or astronomy-adjacent communities become early partners and pilot users.</p></div>
+        <div class="card"><h3>Regional AI infrastructure hub</h3><p>Chile becomes the visible hub for a distributed Latin American compute fabric optimized for sustainability and access.</p></div>
+      </div>
+      <div class="quote">The strongest positioning is not “cheap compute outside Chile.” It is “a Chile-led infrastructure platform using cross-border design to make advanced research capacity accessible.”</div>
+    </section>
+
+    <section class="section">
+      <h2>Impact metrics to emphasize</h2>
+      <div class="grid-4">
+        <div class="metric"><strong>2–4 yrs</strong><span>targeted additional life for reusable hardware</span></div>
+        <div class="metric"><strong>Lower-cost tier</strong><span>enabled by interruptible research mode</span></div>
+        <div class="metric"><strong>Chile-led</strong><span>platform, orchestration, and research access</span></div>
+        <div class="metric"><strong>Sustainability-first</strong><span>renewable power plus circular infrastructure</span></div>
+      </div>
+    </section>
+
+    <section id="roadmap" class="section">
+      <h2>Roadmap</h2>
+      <div class="roadmap">
+        <div class="road"><div class="phase">Phase 1 • Chile setup</div><div>Establish the company presence, refine Startup Chile application materials, build the platform specification, and begin local research outreach.</div></div>
+        <div class="road"><div class="phase">Phase 2 • Prototype</div><div>Build a small proof-of-concept control layer in Chile and validate job scheduling, checkpointing, and retry workflows on initial hardware.</div></div>
+        <div class="road"><div class="phase">Phase 3 • Paraguay compute pilot</div><div>Deploy a low-cost renewable compute pod for interruptible workloads and connect it to the Chile orchestration layer.</div></div>
+        <div class="road"><div class="phase">Phase 4 • Early users</div><div>Onboard researchers, open-source builders, and institutions into discounted pilot programs while collecting operational and impact metrics.</div></div>
+        <div class="road"><div class="phase">Phase 5 • Hardware partnerships</div><div>Secure second-life GPU and server donations or discounted purchases from universities, labs, cloud providers, and enterprises refreshing infrastructure.</div></div>
+      </div>
+    </section>
+
+    <section id="ask" class="section">
+      <h2>Startup Chile ask</h2>
+      <p class="section-intro">The program support would help convert diffent labs from concept into a working Chile-led infrastructure startup with measurable research impact.</p>
+      <div class="grid-3">
+        <div class="card"><h3>Build in Chile</h3><p>Develop the orchestration layer, scheduling logic, application interface, and research partnership pipeline in Chile.</p></div>
+        <div class="card"><h3>Launch pilot workloads</h3><p>Run initial AI and scientific computing jobs through a retry-based architecture designed for lower-cost access.</p></div>
+        <div class="card"><h3>Validate impact</h3><p>Measure compute hours delivered, hardware reused, researcher access enabled, and operating cost reductions versus conventional cloud models.</p></div>
+      </div>
+      <div class="quote">diffent labs is not trying to outcompete hyperscalers at their own game. It is building a different category of compute: reusable, renewable, retryable, and accessible enough to keep serious research alive.</div>
+    </section>
+
+    <div class="footer">diffent labs • Startup Chile application webpage draft • Founder + platform narrative</div>
+  </div>
+</body>
+</html>
